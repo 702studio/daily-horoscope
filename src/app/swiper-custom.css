@@ -1,0 +1,271 @@
+/* Swiper'ın varsayılan stillerini özelleştirme */
+
+/* Instagram tarzı carousel düzeni */
+.instagram-style-carousel {
+  position: relative;
+  padding-bottom: 50px; /* Pagination için daha fazla alan */
+  overflow: visible !important;
+}
+
+/* Daha estetik bir görünüm için arka plan ve maske ayarları */
+.instagram-style-carousel::before,
+.instagram-style-carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 25%; /* Daha geniş mask alanı */
+  height: 100%;
+  z-index: 2;
+  pointer-events: none; /* Kaydırma ve tıklama olaylarının geçmesine izin ver */
+  opacity: 0.99;
+}
+
+.instagram-style-carousel::before {
+  left: 0;
+  background: linear-gradient(to right, 
+    rgba(242, 239, 233, 1) 0%,
+    rgba(242, 239, 233, 0.95) 10%,
+    rgba(242, 239, 233, 0.9) 20%,
+    rgba(242, 239, 233, 0.8) 30%,
+    rgba(242, 239, 233, 0.7) 40%,
+    rgba(242, 239, 233, 0.6) 50%,
+    rgba(242, 239, 233, 0.4) 60%,
+    rgba(242, 239, 233, 0.2) 80%,
+    rgba(242, 239, 233, 0) 100%
+  );
+}
+
+.instagram-style-carousel::after {
+  right: 0;
+  background: linear-gradient(to left, 
+    rgba(242, 239, 233, 1) 0%,
+    rgba(242, 239, 233, 0.95) 10%,
+    rgba(242, 239, 233, 0.9) 20%,
+    rgba(242, 239, 233, 0.8) 30%,
+    rgba(242, 239, 233, 0.7) 40%,
+    rgba(242, 239, 233, 0.6) 50%,
+    rgba(242, 239, 233, 0.4) 60%,
+    rgba(242, 239, 233, 0.2) 80%,
+    rgba(242, 239, 233, 0) 100%
+  );
+}
+
+/* Kenar kartlarını daha bulanık ve soluk göstermek için stil */
+.swiper-slide-prev, 
+.swiper-slide-next {
+  opacity: 0.9;
+  filter: blur(0px);
+  transition: all 0.5s ease;
+}
+
+/* Daha uzaktaki kartları daha da soluk ve bulanık göster */
+.swiper-slide:not(.swiper-slide-active):not(.swiper-slide-prev):not(.swiper-slide-next) {
+  opacity: 0.65;
+  filter: blur(2px);
+  transition: all 0.5s ease;
+}
+
+/* En aktif kartı vurgula */
+.swiper-slide-active {
+  z-index: 10;
+  opacity: 1;
+  transform: scale(1.02);
+  transition: all 0.5s ease;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.05));
+}
+
+/* Instagram tarzı pagination - tamamen yenilenmiş */
+.swiper-pagination {
+  position: absolute !important;
+  bottom: 10px !important;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  z-index: 20;
+}
+
+/* Instagram tarzı bullet'lar - tamamen yenilenmiş */
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  width: auto;
+  display: inline-flex;
+  background-color: rgba(242, 239, 233, 0.7);
+  padding: 6px 10px;
+  border-radius: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  gap: 6px;
+}
+
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50%;
+  background-color: #BFBBB4 !important;
+  opacity: 0.5 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #594D3E !important;
+  opacity: 1 !important;
+  transform: scale(1.2);
+}
+
+/* Dinamik bulletlar için stil */
+.swiper-pagination-bullet-active-main {
+  transform: scale(1.2);
+}
+
+/* Mobil görünümde düzeltmeler */
+@media (max-width: 640px) {
+  .instagram-style-carousel::before,
+  .instagram-style-carousel::after {
+    display: none; /* Mobilde gradient mask'i tamamen kaldır */
+  }
+  
+  /* Mobilde kartların tam görünmesi için düzeltme */
+  .swiper-slide {
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Mobilde pagination için ekstra alan */
+  .instagram-style-carousel {
+    padding-bottom: 40px;
+  }
+  
+  .swiper-pagination-bullets.swiper-pagination-horizontal {
+    padding: 4px 8px;
+    gap: 4px;
+  }
+  
+  .swiper-pagination-bullet {
+    width: 6px !important;
+    height: 6px !important;
+  }
+}
+
+/* Reklam alanı stili - AdSense uyumlu */
+.ad-container {
+  width: 100%;
+  max-width: 728px; /* AdSense banner standart genişliği */
+  margin: 40px auto 20px;
+  padding: 15px;
+  background-color: var(--color-bg-alt);
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px; /* AdSense banner standart yüksekliği */
+  box-sizing: border-box;
+}
+
+/* Mobil AdSense stili - footer pozisyonunda */
+.ad-container-mobile {
+  background-color: var(--color-bg-alt);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+}
+
+.ad-container-mobile::before {
+  content: "Reklam";
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  font-size: 8px;
+  color: var(--color-neutral);
+  opacity: 0.7;
+}
+
+.ad-container::before {
+  content: "Reklam";
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  font-size: 10px;
+  color: var(--color-neutral);
+  opacity: 0.7;
+}
+
+/* Mobil responsive düzeltmeler */
+@media (max-width: 768px) {
+  .ad-container {
+    max-width: 100%;
+    min-height: 60px;
+    padding: 10px;
+    margin: 20px auto;
+  }
+}
+
+/* Kart formunda reklam stili */
+.ad-card {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--color-bg-alt);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.ad-card-header {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  padding: 1rem;
+  position: relative;
+}
+
+.ad-card-header::after {
+  content: "Reklam";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 10px;
+  color: var(--color-bg);
+  opacity: 0.8;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.ad-card-content {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Mouse tekerleği desteğini etkinleştirmek için ek stiller */
+.carousel-container {
+  overflow-x: hidden;
+  overflow-y: visible;
+  touch-action: pan-x;
+}
+
+/* Responsive footer için ek stiller */
+footer {
+  background-color: var(--color-bg);
+}
+
+/* Fixed footer için içerik margin düzeltmesi */
+main {
+  margin-bottom: 40px;
+}
+
+@media (max-width: 640px) {
+  main {
+    margin-bottom: 50px; /* Mobilde daha fazla boşluk */
+  }
+} 

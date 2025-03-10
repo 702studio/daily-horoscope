@@ -1,48 +1,46 @@
-import Link from "next/link";
+import React from 'react';
+import Header from '@/components/Header';
+import ZodiacCarousel from '@/components/ZodiacCarousel';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-8">
-      <div>
-        <h2 className="text-2xl font-semibold text-center border p-4 font-mono rounded-md">
-          Get started by choosing a template path from the /paths/ folder.
-        </h2>
-      </div>
-      <div>
-        <h1 className="text-6xl font-bold text-center">Make anything you imagine 🪄</h1>
-        <h2 className="text-2xl text-center font-light text-gray-500 pt-4">
-          This whole page will be replaced when you run your template path.
-        </h2>
-      </div>
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="border rounded-lg p-6 hover:bg-gray-100 transition-colors">
-          <h3 className="text-xl font-semibold">AI Chat App</h3>
-          <p className="mt-2 text-sm text-gray-600">
-            An intelligent conversational app powered by AI models, featuring real-time responses
-            and seamless integration with Next.js and various AI providers.
-          </p>
+    <main className="min-h-screen w-full flex flex-col px-4 md:px-8 py-6 relative">
+      <Header />
+      
+      {/* Ana İçerik */}
+      <div className="flex-grow mb-16 sm:mb-12">
+        {/* Kart Carouselı */}
+        <div className="mt-8">
+          <ZodiacCarousel />
         </div>
-        <div className="border rounded-lg p-6 hover:bg-gray-100 transition-colors">
-          <h3 className="text-xl font-semibold">AI Image Generation App</h3>
-          <p className="mt-2 text-sm text-gray-600">
-            Create images from text prompts using AI, powered by the Replicate API and Next.js.
-          </p>
-        </div>
-        <div className="border rounded-lg p-6 hover:bg-gray-100 transition-colors">
-          <h3 className="text-xl font-semibold">Social Media App</h3>
-          <p className="mt-2 text-sm text-gray-600">
-            A feature-rich social platform with user profiles, posts, and interactions using
-            Firebase and Next.js.
-          </p>
-        </div>
-        <div className="border rounded-lg p-6 hover:bg-gray-100 transition-colors">
-          <h3 className="text-xl font-semibold">Voice Notes App</h3>
-          <p className="mt-2 text-sm text-gray-600">
-            A voice-based note-taking app with real-time transcription using Deepgram API, 
-            Firebase integration for storage, and a clean, simple interface built with Next.js.
-          </p>
+        
+        {/* Banner Reklam Alanı - Standard 728x90 AdSense - Masaüstü versiyonu */}
+        <div className="ad-container max-w-[728px] mx-auto my-10 h-[90px] hidden sm:flex">
+          <div className="text-neutral-500 text-xs">
+            Bu alan Google AdSense reklamları için ayrılmıştır.
+            <span className="text-xs opacity-75 ml-2">Banner Reklam</span>
+          </div>
         </div>
       </div>
+      
+      {/* Mobil AdSense - Footer pozisyonunda */}
+      <div className="fixed bottom-0 left-0 right-0 sm:hidden z-10">
+        <div className="ad-container-mobile w-full h-[60px] flex items-center justify-center">
+          <div className="text-neutral-500 text-xs">
+            Bu alan Google AdSense reklamları için ayrılmıştır.
+          </div>
+        </div>
+      </div>
+      
+      {/* Footer - Mobilde gizli */}
+      <footer className="w-full text-center py-3 border-t border-neutral fixed bottom-0 left-0 right-0 bg-bg z-10 hidden sm:block">
+        <div className="flex flex-wrap justify-center items-center gap-1 text-[10px] sm:text-xs text-accent max-w-[95%] mx-auto">
+          <p className="whitespace-nowrap">© {new Date().getFullYear()} Günlük Burç Yorumları.</p>
+          <p className="whitespace-nowrap">Tüm hakları saklıdır.</p>
+          <span className="hidden sm:inline mx-1">|</span>
+          <p className="whitespace-nowrap">Bu site üzerinden sunulan içerikler sadece bilgilendirme amaçlıdır.</p>
+        </div>
+      </footer>
     </main>
   );
 }

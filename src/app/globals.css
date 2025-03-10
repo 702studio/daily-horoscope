@@ -1,29 +1,94 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import './swiper-custom.css';
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --color-bg: #F2EFE9;
+  --color-bg-alt: #D9D7CC;
+  --color-neutral: #BFBBB4;
+  --color-text: #594D3E;
+  --color-accent: #8C7E6C;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Carousel ile ilgili konteyner stili */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Kaydırma hissi için genel stil */
+.card-slide {
+  transition: transform 0.3s ease;
+  user-select: none;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Eşit yükseklikte kartlar için stil */
+.zodiac-slide-item {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Kart içeriği için stil */
+.zodiac-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Swiper parmak kaydırma desteği için ek stilller */
+.swiper-wrapper {
+  touch-action: pan-y;
+  align-items: stretch !important;
+  height: auto !important;
+}
+
+/* Mouse wheel etkinleştirmek için konteynerin davranışı */
+.swiper-container {
+  overflow: visible !important;
+}
+
+.swiper {
+  overflow: visible !important;
+  width: 100%;
+}
+
+.swiper-slide {
+  height: auto !important;
+  display: flex;
+  align-items: stretch;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 @layer utilities {
